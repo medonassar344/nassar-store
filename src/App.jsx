@@ -11,7 +11,7 @@ function App() {
     owner: "Khalid Nassar",
     tagline: "Visionary Style • Premium Eyewear Curator",
     slogan: "See the World Through a Premium Lens",
-    address: "15 Abd Alhagar, Ezbet Elnakhl, Cairo",
+    address: "15-abd alhagar -ezbet elnakhl",
     phone: "01112876674",
     whatsapp: "201112876674", // Standardized for API
     socials: [
