@@ -86,7 +86,7 @@ function App() {
           />
           <ActionButton
             icon={MapPin}
-            label="Showroom"
+            label="Nassar Showroom"
             subtext={userData.address}
             href="https://maps.google.com" // Placeholder for actual maps
             colorClass="bg-white/5 border border-white/10"
