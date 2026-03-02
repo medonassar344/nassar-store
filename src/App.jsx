@@ -12,8 +12,8 @@ function App() {
     tagline: "Visionary Style • Premium Eyewear Curator",
     slogan: "See the World Through a Premium Lens",
     address: "15 Abd Alhagar, Ezbet Elnakhl, Cairo",
-    phone: "011128774",
-    whatsapp: "2011128774", // Standardized for API
+    phone: "01112877664",
+    whatsapp: "201112877664", // Standardized for API
     socials: [
       { icon: Instagram, href: "https://instagram.com/nassar.store" },
       { icon: Facebook, href: "https://facebook.com/nassar.store" },
