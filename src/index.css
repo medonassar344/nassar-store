@@ -2,41 +2,52 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-50 antialiased selection:bg-cyan-500/30;
+    @apply bg-black text-slate-100 antialiased selection:bg-cyan-500/30;
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
   }
 }
 
 .glass-card {
-  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+  @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2rem];
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.premium-border {
+  position: relative;
+  border-radius: 2rem;
+  background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), transparent, rgba(255, 255, 255, 0.05));
+  padding: 1px;
+}
+
+.premium-border-inner {
+  @apply bg-zinc-950/80 rounded-[2rem] w-full h-full;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient;
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-zinc-400 to-zinc-600 font-bold;
 }
 
-.bg-mesh {
+.bg-grid {
+  background-size: 40px 40px;
   background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 @theme {
-  --animate-gradient: gradient 8s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
 
-  @keyframes gradient {
+  @keyframes float {
 
     0%,
     100% {
-      background-size: 200% 200%;
-      background-position: left center;
+      transform: translateY(0px);
     }
 
     50% {
-      background-size: 200% 200%;
-      background-position: right center;
+      transform: translateY(-20px);
     }
   }
 }

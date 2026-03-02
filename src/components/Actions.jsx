@@ -12,9 +12,9 @@ export const ActionButton = ({ icon: Icon, label, subtext, href, colorClass, del
             transition={{ delay, duration: 0.4 }}
             whileHover={{ scale: 1.02, x: 5 }}
             whileTap={{ scale: 0.98 }}
-            className="glass-card group flex items-center p-4 rounded-2xl transition-all duration-300 hover:bg-white/10"
+            className="glass-card group flex items-center p-4 rounded-3xl transition-all duration-300 hover:bg-white/10"
         >
-            <div className={`p-3 rounded-xl ${colorClass} text-white shadow-lg mr-4 group-hover:scale-110 transition-transform`}>
+            <div className={`p-3 rounded-2xl ${colorClass} text-white mr-4 group-hover:scale-110 transition-transform`}>
                 <Icon size={24} />
             </div>
             <div className="flex-1 text-left">

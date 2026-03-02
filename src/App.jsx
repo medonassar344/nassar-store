@@ -1,98 +1,122 @@
 import { ProfileHeader } from './components/ProfileHeader.jsx';
 import { AnimatedBackground } from './components/AnimatedBackground.jsx';
 import { ActionButton, SocialIcon } from './components/Actions.jsx';
-import { Phone, MessageCircle, MapPin, Twitter, Instagram, Linkedin, Github, Send } from 'lucide-react';
+import { TiltCard } from './components/TiltCard.jsx';
+import { Phone, MessageCircle, MapPin, Instagram, Facebook, Send, Glasses } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-console.log('App.jsx is loading...');
 
 function App() {
   const userData = {
     name: "Nassar Store",
-    owner: "Medo Nassar",
-    tagline: "Premium Tech & Modern Lifestyle Solutions",
-    address: "New Cairo, District 5, Cairo, Egypt",
-    phone: "+201234567890",
-    whatsapp: "+201234567890",
-    maps: "https://goo.gl/maps/example",
+    owner: "Khalid Nassar",
+    tagline: "Visionary Style • Premium Eyewear Curator",
+    slogan: "See the World Through a Premium Lens",
+    address: "15 Abd Alhagar, Ezbet Elnakhl, Cairo",
+    phone: "011128774",
+    whatsapp: "2011128774", // Standardized for API
     socials: [
-      { icon: Twitter, href: "https://twitter.com" },
-      { icon: Instagram, href: "https://instagram.com" },
-      { icon: Linkedin, href: "https://linkedin.com" },
-      { icon: Github, href: "https://github.com" },
+      { icon: Instagram, href: "https://instagram.com/nassar.store" },
+      { icon: Facebook, href: "https://facebook.com/nassar.store" },
     ]
   };
 
-  console.log('Rendering App component with data:', userData);
-
   return (
-    <div className="relative min-h-screen selection:bg-cyan-500/30">
+    <div className="relative min-h-screen text-zinc-100 selection:bg-white/20">
       <AnimatedBackground />
 
-      <main className="max-w-md mx-auto px-6 pb-24 space-y-8">
-        <ProfileHeader
-          name={userData.name}
-          title={userData.owner}
-        />
+      <main className="max-w-md mx-auto px-6 py-20 space-y-12">
+        {/* Profile Card with 3D Tilt */}
+        <TiltCard>
+          <div className="glass-card p-10 flex flex-col items-center text-center space-y-6 relative overflow-hidden group">
+            {/* Decorative Icon */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute -top-10 -right-10 w-32 h-32 bg-white/5 rounded-full blur-2xl group-hover:bg-cyan-500/10 transition-colors"
+            />
 
+            <ProfileHeader
+              name={userData.name}
+              title={userData.owner}
+              imageUrl="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400&h=400&auto=format&fit=crop" // Premium glasses image
+            />
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="flex items-center space-x-2 text-cyan-400 font-medium tracking-widest uppercase text-xs"
+            >
+              <Glasses size={16} />
+              <span>{userData.tagline}</span>
+            </motion.div>
+          </div>
+        </TiltCard>
+
+        {/* Slogan Section */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-center"
+          transition={{ delay: 0.6 }}
+          className="text-center space-y-2"
         >
-          <p className="text-slate-300 italic">"{userData.tagline}"</p>
+          <h2 className="text-3xl font-bold tracking-tight gradient-text">
+            {userData.slogan}
+          </h2>
+          <div className="h-0.5 w-12 bg-white/20 mx-auto rounded-full" />
         </motion.div>
 
-        <section className="space-y-4">
+        {/* Action Buttons */}
+        <section className="grid gap-4">
           <ActionButton
             icon={Phone}
-            label="Call Me"
+            label="Voice Call"
             subtext={userData.phone}
             href={`tel:${userData.phone}`}
-            colorClass="bg-gradient-to-br from-green-500 to-emerald-600"
-            delay={0.4}
+            colorClass="bg-white/5 border border-white/10"
+            delay={0.7}
           />
           <ActionButton
             icon={MessageCircle}
-            label="WhatsApp"
-            subtext="Available 24/7"
+            label="WhatsApp Chat"
+            subtext="Personal Consultant"
             href={`https://wa.me/${userData.whatsapp}`}
-            colorClass="bg-gradient-to-br from-teal-400 to-green-500"
-            delay={0.5}
+            colorClass="bg-white/5 border border-white/10"
+            delay={0.8}
           />
           <ActionButton
             icon={MapPin}
-            label="Location"
+            label="Showroom"
             subtext={userData.address}
-            href={userData.maps}
-            colorClass="bg-gradient-to-br from-blue-500 to-indigo-600"
-            delay={0.6}
+            href="https://maps.google.com" // Placeholder for actual maps
+            colorClass="bg-white/5 border border-white/10"
+            delay={0.9}
           />
         </section>
 
-        <section className="flex justify-center space-x-4">
+        {/* Social Icons */}
+        <section className="flex justify-center items-center space-x-6">
           {userData.socials.map((social, index) => (
             <SocialIcon
               key={index}
               icon={social.icon}
               href={social.href}
-              delay={0.7 + index * 0.1}
+              delay={1.0 + index * 0.1}
             />
           ))}
         </section>
       </main>
 
-      {/* Floating Action Button */}
+      {/* Floating Action Button - Modernized */}
       <motion.button
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1.2, type: "spring" }}
-        whileHover={{ scale: 1.1 }}
+        initial={{ scale: 0, rotate: -45 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ delay: 1.5, type: "spring" }}
+        whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 p-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 shadow-xl text-white z-50 hover:shadow-cyan-500/25 transition-all"
+        className="fixed bottom-8 right-8 w-16 h-16 rounded-3xl bg-white text-black flex items-center justify-center shadow-[0_20px_40px_rgba(255,255,255,0.2)] z-50 transition-all hover:bg-zinc-200"
       >
-        <Send size={24} />
+        <Send size={28} />
       </motion.button>
     </div>
   );
