@@ -1,8 +1,10 @@
-import { ProfileHeader } from './components/ProfileHeader';
-import { AnimatedBackground } from './components/AnimatedBackground';
-import { ActionButton, SocialIcon } from './components/Actions';
+import { ProfileHeader } from './components/ProfileHeader.jsx';
+import { AnimatedBackground } from './components/AnimatedBackground.jsx';
+import { ActionButton, SocialIcon } from './components/Actions.jsx';
 import { Phone, MessageCircle, MapPin, Twitter, Instagram, Linkedin, Github, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+console.log('App.jsx is loading...');
 
 function App() {
   const userData = {
@@ -20,6 +22,8 @@ function App() {
       { icon: Github, href: "https://github.com" },
     ]
   };
+
+  console.log('Rendering App component with data:', userData);
 
   return (
     <div className="relative min-h-screen selection:bg-cyan-500/30">
